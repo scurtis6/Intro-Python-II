@@ -10,3 +10,11 @@ class Player:
 
     def __str__(self):
         return f'Player: {self.name}, Current Room: {self.current_room}'
+
+    # picks up an item
+    def takeItem(self, item):
+        self.inventory.append(item)
+    
+    # drops off an item
+    def dropItem(self, item):
+        self.inventory.remove(item)
