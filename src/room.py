@@ -1,10 +1,10 @@
 # Implement a class to hold room information. This should have name and
 # description attributes.
 class Room:
-    def __init__(self, name, description, item=[]):
+    def __init__(self, name, description, items=[]):
         self.name = name
         self.description = description
-        self.item = item
+        self.items = items
         # AbbributeError: 'Room' object has no attribute 'n_to' fixed
         self.n_to = None
         self.e_to = None
@@ -15,7 +15,7 @@ class Room:
         return f'{self.name}, Description: {self.description}.'
 
     def add_Item(self, items):
-        self.item.append(items)
+        self.items.append(items)
 
     def remove_Item(self, items):
-        self.item.remove(items)
+        self.items.remove(items)

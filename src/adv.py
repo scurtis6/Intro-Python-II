@@ -54,11 +54,12 @@ room['foyer'].add_Item(item['box'])
 # Make a new player object that is currently in the 'outside' room.
 player = Player('Sierra', room['outside'])
 # print(player)
+for room_Item in player.current_room.items:
+    print(room_Item)
 
 # Write a loop that:
 while True:
     current_room = player.current_room
-    print()
 
     # * Prints the current room name
     print(f'Current Room: {player.current_room.name}\n')
@@ -73,9 +74,13 @@ while True:
     # * Waits for user input and decides what to do.
     user_input = input('\nWhere do you want to go? Select n, e, s, w or q to quit: ')
 #
-    
+    if len(user_input) == 2:
+        if user_input[0] =='take' or user_input[0] =='get':
+            player.takeItem(user_input[1])
+        elif user_input[0] == 'drop':
+            player.dropItem(user_input[1])
 # 
-#
+# #
     try:
         # If the user enters a cardinal direction, attempt to move to the room there.
         if user_input == 'n':
