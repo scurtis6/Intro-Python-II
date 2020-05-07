@@ -14,7 +14,9 @@ class Player:
     # picks up an item
     def takeItem(self, item):
         self.inventory.append(item)
+        print(f'You have picked up {self.inventory}')
     
     # drops off an item
     def dropItem(self, item):
         self.inventory.remove(item)
+        print(f'You have dropped {self.inventory}')

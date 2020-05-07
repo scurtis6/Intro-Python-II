@@ -1,7 +1,14 @@
 from room import Room
 from player import Player
+from item import Item
 import textwrap
 
+# add Items
+item = {
+    'sword': Item('Sword', 'attach weapon'),
+    'shield': Item('Shield', 'defense weapon'),
+    'box': Item('Box', 'Open to find hidden treasures')
+}
 # Declare all the rooms
 
 room = {
@@ -35,6 +42,11 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# Link Items
+room['outside'].add_Item(item['sword'])
+room['outside'].add_Item(item['shield'])
+room['foyer'].add_Item(item['box'])
+
 #
 # Main
 #
@@ -60,7 +72,10 @@ while True:
 
     # * Waits for user input and decides what to do.
     user_input = input('\nWhere do you want to go? Select n, e, s, w or q to quit: ')
-
+#
+    
+# 
+#
     try:
         # If the user enters a cardinal direction, attempt to move to the room there.
         if user_input == 'n':
