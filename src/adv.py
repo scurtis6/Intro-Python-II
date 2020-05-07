@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -38,14 +39,54 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player = Player('Sierra', room['outside'])
+# print(player)
 
 # Write a loop that:
 #
+while True:
+    current_room = player.current_room
 # * Prints the current room name
+    print(f'Current Room: ' + player.current_room.name)
+
 # * Prints the current description (the textwrap module might be useful here).
+    print(player.current_room.description)
+
 # * Waits for user input and decides what to do.
-#
+    user_input = input('Where do you want to go? Select n, e, s, w or q to quit: ')
+
+    # try:
+        # user_input = str(user_input)
+    if user_input == 'n':
+        if player.current_room.n_to is not None:
+            player.current_room = current_room.n_to
+            print('You picked north!')
+        else:
+            print('Try again. There is no room that way!')
+            
+    elif user_input == 'e':
+        if player.current_room.e_to is not None:
+            player.current_room = current_room.e_to
+            print('You picked east!')
+        else:
+            print('Try again. There is no room that way!')
+
+    else:
+        print('Enter: n, e, s, w or q')
+
+    # except AttributeError:
+    #     if len({room.Room}) == 0:
+    #         print('Try again. There is no room that way!')
+
+    # if user_input == 'q':
+    #     print('Thanks for playing with us!')
+    #     break
+
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
-#
+
 # If the user enters "q", quit the game.
+
+    # try:
+    #     user_input = user_input
+    #     if user_input 
