@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+import textwrap
 
 # Declare all the rooms
 
@@ -48,13 +49,17 @@ while True:
     print()
 
     # * Prints the current room name
-    print(f'Current Room: ' + player.current_room.name)
+    print(f'Current Room: {player.current_room.name}\n')
 
     # * Prints the current description (the textwrap module might be useful here).
-    print(player.current_room.description)
+    wrapper = textwrap.TextWrapper(width=45)
+
+    description_list = wrapper.wrap(text=player.current_room.description)
+    for words in description_list:
+        print(words)
 
     # * Waits for user input and decides what to do.
-    user_input = input('Where do you want to go? Select n, e, s, w or q to quit: ')
+    user_input = input('\nWhere do you want to go? Select n, e, s, w or q to quit: ')
 
     try:
         # If the user enters a cardinal direction, attempt to move to the room there.
@@ -62,46 +67,46 @@ while True:
 
             if player.current_room.n_to is not None:
                 player.current_room = current_room.n_to
-                print('You picked north!')
+                print('\nYou picked north!')
             else:
                 # throws an error message
-                print('Try again. There is no room that way!')
+                print('\nTry again. There is no room that way!')
                 
         elif user_input == 'e':
 
             if player.current_room.e_to is not None:
                 player.current_room = current_room.e_to
-                print('You picked east!')
+                print('\nYou picked east!')
             else:
                 # throws an error message
-                print('Try again. There is no room that way!')
+                print('\nTry again. There is no room that way!')
 
         elif user_input == 's':
 
             if player.current_room.s_to is not None:
                 player.current_room = current_room.s_to
-                print('You picked south!')
+                print('\nYou picked south!')
             else:
                 # throws an error message
-                print('Try again. There is no room that way!')
+                print('\nTry again. There is no room that way!')
 
         elif user_input == 'w':
 
             if player.current_room.w_to is not None:
                 player.current_room = current_room.w_to
-                print('You picked west!')
+                print('\nYou picked west!')
             else:
                 # throws an error message
-                print('Try again. There is no room that way!')
+                print('\nTry again. There is no room that way!')
 
         else:
             # Print an error message if the movement isn't allowed.
-            print('Enter: n, e, s, w or q')
+            print('\nPlease Enter: n, e, s, w or q')
 
     except AttributeError:
         pass
 
 # If the user enters "q", quit the game.
     if user_input == 'q':
-        print('Thanks for playing with us!')
+        print('\nThanks for playing with us!\n')
         break
