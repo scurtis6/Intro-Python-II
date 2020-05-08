@@ -121,6 +121,8 @@ while True:
                 else:
                     # throws an error message
                     print('\nTry again. There is no room that way!')
+
+            # inventory
             elif user_input =='i' or user_input == 'inventory':
                 print('-----------------------------')
                 print('Inventory:\n')
